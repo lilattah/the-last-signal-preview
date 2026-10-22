@@ -23,8 +23,8 @@ thumb=(thumbnails.get("maxres") or thumbnails.get("standard") or thumbnails.get(
 out=Path("youtube-data.js")
 existing={}
 if out.exists():
-    match=re.search(r"window\\.TLS_YOUTUBE_DATA\\s*=\\s*(\\{.*\\});?\\s*$",out.read_text(),re.S)
+    match=re.search(r"window\.TLS_YOUTUBE_DATA\s*=\s*(\{.*?\})\s*;?\s*$",out.read_text(),re.S)
     if match: existing=json.loads(match.group(1))
 existing[slot]={"title":sn.get("title",""),"description":sn.get("description",""),"thumbnail":thumb,"publishedAt":sn.get("publishedAt",""),"duration":v.get("contentDetails",{}).get("duration",""),"video":"https://www.youtube.com/watch?v="+vid,"youtubeId":vid}
-out.write_text("window.TLS_YOUTUBE_DATA = "+json.dumps(existing,ensure_ascii=False,indent=2)+";\\n",encoding="utf-8")
+out.write_text("window.TLS_YOUTUBE_DATA = "+json.dumps(existing,ensure_ascii=False,indent=2)+";\n",encoding="utf-8")
 print("Synced",slot,vid)
