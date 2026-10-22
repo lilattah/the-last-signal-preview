@@ -1,0 +1,8 @@
+/* Every episode tile must visibly behave like a clickable card. */
+#home .tls-part-card,#episodes .grid.three>.card{cursor:pointer!important;position:relative;outline-offset:4px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,filter .3s ease!important}
+#home .tls-part-card:hover,#home .tls-part-card:focus-visible,#episodes .grid.three>.card:hover,#episodes .grid.three>.card:focus-visible{cursor:pointer!important;transform:translateY(-8px) scale(1.015)!important;border-color:#f3cf43!important;box-shadow:0 0 0 1px #f3cf43,0 16px 42px #000b,0 0 22px #f3cf434a!important}
+#home .tls-part-card img,#episodes .grid.three>.card img{pointer-events:none;transition:filter .3s,transform .5s}
+#home .tls-part-card:hover img,#episodes .grid.three>.card:hover img{transform:scale(1.045);filter:brightness(.9)!important}
+#home .tls-part-card *,#episodes .grid.three>.card *{cursor:pointer}
+#home .tls-part-card:hover .tls-part-badge,#episodes .grid.three>.card:hover button{background:#ffe36c!important;box-shadow:0 0 26px #f3cf4388!important;transform:translateY(-3px)}
+@media(prefers-reduced-motion:reduce){#home .tls-part-card,#episodes .grid.three>.card{transition:none!important}}
