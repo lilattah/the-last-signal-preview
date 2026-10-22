@@ -1,0 +1,3 @@
+#tls-episode-modal .tls-modal-frame{position:relative}
+#tls-episode-modal .tls-enable-audio{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:5;background:#f3cf43;color:#121214;border:1px solid #ffdf68;border-radius:6px;padding:12px 14px;font-weight:900;font-size:12px;white-space:nowrap;cursor:pointer;box-shadow:0 6px 20px #000a;transition:transform .2s,box-shadow .2s}
+#tls-episode-modal .tls-enable-audio:hover{transform:translateX(-50%) translateY(-3px);box-shadow:0 0 23px #f3cf4399}
