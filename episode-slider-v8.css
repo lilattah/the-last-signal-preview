@@ -1,0 +1,7 @@
+#tls-episode-modal .tls-enable-audio{display:none!important}
+#tls-episode-modal .tls-slide-arrow{position:fixed;top:50%;z-index:10006;transform:translateY(-50%);height:68px;width:48px;border:1px solid #f3cf43b5;border-radius:10px;background:rgba(14,15,20,.83);color:#f3cf43;font:500 52px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 5px 20px #0009;transition:background .2s,transform .2s,opacity .2s}
+#tls-episode-modal .tls-slide-prev{left:max(8px,calc((100vw - 1420px)/2))}
+#tls-episode-modal .tls-slide-next{right:max(8px,calc((100vw - 1420px)/2))}
+#tls-episode-modal .tls-slide-arrow:not(:disabled):hover{background:#f3cf43;color:#121214;transform:translateY(-50%) scale(1.07)}
+#tls-episode-modal .tls-slide-arrow:disabled{opacity:.24;cursor:default}
+@media(max-width:800px){#tls-episode-modal .tls-slide-arrow{width:31px;height:54px;font-size:35px;top:54%}#tls-episode-modal .tls-slide-prev{left:0}#tls-episode-modal .tls-slide-next{right:0}}
