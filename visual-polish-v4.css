@@ -1,0 +1,7 @@
+/* Unified premium gold hover, applied to all episode and story cards */
+.tls-part-badge,.tls-part-card button,#episodes .cardbody button,#archive .cardbody button,#lab .cardbody button{transition:transform .32s cubic-bezier(.2,.8,.2,1),background-color .32s,color .32s,box-shadow .32s,border-color .32s!important}
+.tls-part-card:hover .tls-part-badge,#episodes .card:hover .cardbody button,#archive .card:hover .cardbody button,#lab .card:hover .cardbody button{background:#ffe16d!important;color:#08090c!important;border-color:#fff0ab!important;box-shadow:0 0 0 1px #f3cf43,0 0 25px #f3cf4380,0 7px 26px #0008!important;transform:translateY(-3px)!important}
+.tls-part-card:focus-visible .tls-part-badge,#episodes .card:focus-visible .cardbody button{box-shadow:0 0 0 2px white,0 0 24px #f3cf43}
+#tls-episode-modal:not([hidden]).is-open{background:rgba(5,7,10,.43)!important;backdrop-filter:blur(11px)!important;-webkit-backdrop-filter:blur(11px)!important}
+#tls-episode-modal .tls-modal-inner{background:linear-gradient(120deg,rgba(20,22,28,.91),rgba(12,14,19,.89))!important;backdrop-filter:blur(6px)}
+@media(prefers-reduced-motion:reduce){.tls-part-badge,#episodes .cardbody button,#archive .cardbody button,#lab .cardbody button{transition:none!important}}
