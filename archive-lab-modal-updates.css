@@ -1,0 +1,23 @@
+/* Unified portrait art-cards for Archive, Signal Lab and clue board */
+#archive .grid.four,#lab .grid.four,#lab .grid.three{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}
+#archive .grid.four>.card,#lab .grid.four>.card,#lab .grid.three>.card{position:relative;min-height:420px;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s}
+#archive .grid.four>.card:hover,#lab .grid.four>.card:hover,#lab .grid.three>.card:hover{transform:translateY(-5px);border-color:var(--gold)}
+#archive .grid.four>.card>.art,#lab .grid.four>.card>.art,#lab .grid.three>.card>.art{height:420px;min-height:420px;width:100%;object-fit:cover;filter:brightness(.82)}
+#archive .grid.four>.card>.cardbody,#lab .grid.four>.card>.cardbody,#lab .grid.three>.card>.cardbody{position:absolute;inset:0;padding:15px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(0deg,#080a0cf5 0%,#080a0c55 52%,transparent 95%)}
+#archive .grid.four>.card>.cardbody small,#lab .grid.four>.card>.cardbody small,#lab .grid.three>.card>.cardbody small{font-size:11px;color:var(--gold);letter-spacing:1px}
+#archive .grid.four>.card>.cardbody h3,#lab .grid.four>.card>.cardbody h3,#lab .grid.three>.card>.cardbody h3{font-size:clamp(20px,2vw,29px);margin:7px 0 13px;line-height:1.07}
+#archive .grid.four>.card>.cardbody p,#lab .grid.four>.card>.cardbody p,#lab .grid.three>.card>.cardbody p{display:none}
+#archive .grid.four>.card>.cardbody button,#lab .grid.four>.card>.cardbody button,#lab .grid.three>.card>.cardbody button{width:100%;text-align:center}
+@media(max-width:1100px){#archive .grid.four,#lab .grid.four,#lab .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){#archive .grid.four,#lab .grid.four,#lab .grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}#archive .grid.four>.card,#lab .grid.four>.card,#lab .grid.three>.card,#archive .grid.four>.card>.art,#lab .grid.four>.card>.art,#lab .grid.three>.card>.art{min-height:330px;height:330px}}
+/* Cinematic episode overlay; preserve native hidden semantics and close transition */
+#tls-episode-modal:not([hidden]){opacity:0;background:rgba(5,7,10,.12);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);transition:opacity .5s ease,background .5s ease,backdrop-filter .5s ease,-webkit-backdrop-filter .5s ease}
+#tls-episode-modal:not([hidden]).is-open{opacity:1;background:rgba(5,7,10,.65);backdrop-filter:blur(17px);-webkit-backdrop-filter:blur(17px)}
+#tls-episode-modal .tls-modal-inner{transform:translateY(32px) scale(.96);opacity:0;transition:transform .56s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
+#tls-episode-modal.is-open .tls-modal-inner{transform:none;opacity:1}
+#tls-episode-modal .tls-modal-results i{width:0;transition:width 1.4s cubic-bezier(.25,.8,.2,1)}
+#tls-episode-modal .tls-modal-results .tls-poll-winner{animation:tls-victory-glow 1.65s ease-in-out infinite}
+#tls-episode-modal .tls-poll-score .tls-poll-winner{animation:tls-victory-text 1.3s ease-in-out infinite}
+@keyframes tls-victory-glow{50%{filter:brightness(1.4) drop-shadow(0 0 8px var(--gold))}}
+@keyframes tls-victory-text{50%{color:#fff3a1;text-shadow:0 0 14px var(--gold);opacity:.62}}
+@media(prefers-reduced-motion:reduce){#tls-episode-modal:not([hidden]),#tls-episode-modal .tls-modal-inner,#tls-episode-modal .tls-modal-results i{transition:none!important}#tls-episode-modal .tls-poll-winner{animation:none!important}}
