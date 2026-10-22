@@ -1,0 +1,43 @@
+name: Import YouTube episode metadata
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: YouTube Shorts or watch URL
+        required: true
+        type: string
+        default: https://www.youtube.com/shorts/K9Tn53Qlxsk
+      episode:
+        description: Episode to update
+        required: true
+        type: choice
+        options:
+          - part-00
+          - part-01
+permissions:
+  contents: write
+concurrency:
+  group: youtube-metadata-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch metadata using protected key
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          VIDEO_URL: ${{ inputs.video_url }}
+          EPISODE: ${{ inputs.episode }}
+        run: python3 tools/import_youtube.py "$VIDEO_URL" "$EPISODE"
+      - name: Commit public metadata (never API key)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add youtube-data.js
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync YouTube metadata for ${{ inputs.episode }}"
+            git push
+          fi
