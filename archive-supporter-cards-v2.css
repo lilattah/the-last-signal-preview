@@ -1,0 +1,20 @@
+/* Shared cinematic archive supporter card — homepage and supporter page */
+.tls-supporter-stage{position:relative;width:min(100%,380px);aspect-ratio:3/4;perspective:900px;overflow:visible;isolation:isolate}
+.tls-supporter-visual{position:absolute;inset:0;display:block;overflow:hidden;border:2px solid #f3cf43;border-radius:11px;background:#0b0d13;text-decoration:none;color:#f1ede6;cursor:pointer;box-shadow:0 4px 20px #0008;transform-origin:center center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s,border-color .35s}
+.tls-supporter-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;transition:transform .5s ease,filter .35s}
+.tls-supporter-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(15px,2vw,23px);background:linear-gradient(180deg,#06080e91 0%,transparent 26%,transparent 45%,#05060ce9 100%);pointer-events:none}
+.tls-supporter-eyebrow{color:#f3cf43;font:800 12px/1.4 Arial,sans-serif;letter-spacing:.07em}
+.tls-supporter-bottom{display:flex;flex-direction:column;gap:8px}
+.tls-supporter-bottom strong{color:#f4eee5;font:900 clamp(36px,4vw,59px)/.98 Impact,'Arial Narrow',sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.tls-supporter-bottom small{color:#f3cf43;font:700 17px/1.3 Arial,sans-serif}
+.tls-supporter-visual:hover,.tls-supporter-visual:focus-visible{transform:translateY(-7px) scale(1.015);border-color:#ffe47d;box-shadow:0 20px 38px #000a,0 0 0 1px #f3cf43,0 0 25px #f3cf4366}
+.tls-supporter-visual:hover img,.tls-supporter-visual:focus-visible img{transform:scale(1.045);filter:brightness(1.08)}
+.tls-supporter-visual:focus-visible{outline:2px solid white;outline-offset:4px}
+/* Future multi-supporter carousel. The lone featured card remains static. */
+.tls-supporter-stage:has(.tls-supporter-slide:nth-child(2)){overflow:hidden}
+.tls-supporter-slide:not(.is-current){visibility:hidden;pointer-events:none;opacity:0}
+.tls-supporter-stage.has-multiple .tls-supporter-slide{transition:transform .65s cubic-bezier(.22,.73,.22,1),opacity .65s ease,visibility .65s}
+.tls-supporter-stage.has-multiple .tls-supporter-slide.is-exiting{transform:translateY(-100%) scale(.95);opacity:0;visibility:visible}
+.tls-supporter-stage.has-multiple .tls-supporter-slide.is-entering{transform:translateY(100%) scale(.95);opacity:0;visibility:visible}
+@media(prefers-reduced-motion:reduce){.tls-supporter-visual,.tls-supporter-visual img,.tls-supporter-slide{transition:none!important;animation:none!important}}
+@media(max-width:650px){.tls-supporter-stage{width:min(100%,380px);margin-inline:auto}.tls-supporter-bottom strong{font-size:clamp(35px,10vw,56px)}}
