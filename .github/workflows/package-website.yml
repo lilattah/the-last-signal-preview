@@ -1,0 +1,25 @@
+name: Package complete website ZIP
+on:
+  push:
+    paths:
+      - .github/workflows/package-website.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create website ZIP with all image assets
+        run: |
+          mkdir -p /tmp/tls-export/the-last-signal-site
+          rsync -a --exclude='.git/' --exclude='.github/' --exclude='*.zip' ./ /tmp/tls-export/the-last-signal-site/
+          cd /tmp/tls-export
+          zip -q -r "$GITHUB_WORKSPACE/The_Last_Signal_Guncel_Site.zip" the-last-signal-site
+          unzip -l "$GITHUB_WORKSPACE/The_Last_Signal_Guncel_Site.zip" | tail -2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: the-last-signal-complete-site
+          path: The_Last_Signal_Guncel_Site.zip
+          retention-days: 7
